@@ -96,15 +96,15 @@ class Coverflow extends Component {
         move: move
       });
     }
-    if (this.state.current != active) {
-      this.props.onChange && this.props.onChange(this.state.current, active);
-    }
+
     this.setState(state);
   }
 
   render() {
-    const {enableScroll} = this.props;
-    const {width, height} = this.state;
+    const {enableScroll, onChange} = this.props;
+    const {width, height, current} = this.state;
+    onChange && onChange(current);
+
     return (
         <div className={styles.container}
              style={[{width: `${width}px`, height: `${height}px`}, this.props.media]}
