@@ -62,6 +62,12 @@ class Coverflow extends Component {
       this.updateDimensions(nextProps.active);
     }
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.active != this.state.current && nextState.current != this.state.current) {
+      return true;
+    }
+    return false;
+  }
 
   componentWillUnmount() {
     let length = React.Children.count(this.props.children);
@@ -322,6 +328,7 @@ Coverflow.propTypes = {
   enableHeading: React.PropTypes.bool,
   enableScroll: React.PropTypes.bool,
   active: React.PropTypes.number,
+  defaultActive: React.PropTypes.number,
   onChange: React.PropTypes.func
 };
 
