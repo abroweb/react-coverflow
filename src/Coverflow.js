@@ -96,6 +96,9 @@ class Coverflow extends Component {
         move: move
       });
     }
+    if (this.state.current != active) {
+      this.props.onChange && this.props.onChange(this.state.current, active);
+    }
     this.setState(state);
   }
 
@@ -318,7 +321,8 @@ Coverflow.propTypes = {
   navigation: React.PropTypes.bool,
   enableHeading: React.PropTypes.bool,
   enableScroll: React.PropTypes.bool,
-  active: React.PropTypes.number
+  active: React.PropTypes.number,
+  onChange: React.PropTypes.func
 };
 
 Coverflow.defaultProps = {
